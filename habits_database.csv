@@ -1,0 +1,21 @@
+Nombre,Categoría,Frecuencia,Hora Ideal,Duración (min),Prioridad,Dificultad,Racha Actual,Mejor Racha,Estado,Notas
+Meditación matutina,Bienestar,Diario,06:30,15,Alta,Media,0,0,Activo,Usar app Headspace o Calm
+Ejercicio físico,Salud,Diario,07:00,45,Alta,Alta,0,0,Activo,Alternar cardio y fuerza
+Lectura,Desarrollo Personal,Diario,21:00,30,Media,Baja,0,0,Activo,Mínimo 20 páginas
+Journaling,Bienestar,Diario,22:00,10,Media,Baja,0,0,Activo,Reflexión del día y gratitud
+Hidratación (2L agua),Salud,Diario,Todo el día,0,Alta,Baja,0,0,Activo,Usar botella marcada
+Planificación semanal,Productividad,Semanal,Domingo 19:00,30,Alta,Media,0,0,Activo,Revisar metas y calendario
+Revisión de finanzas,Finanzas,Semanal,Sábado 10:00,20,Media,Media,0,0,Activo,Gastos e inversiones
+Aprender idioma,Desarrollo Personal,Diario,12:30,15,Media,Media,0,0,Activo,Duolingo o similar
+Caminata al aire libre,Salud,Diario,18:00,20,Media,Baja,0,0,Activo,Desconexión digital
+Limpieza del espacio,Hogar,Diario,08:00,10,Baja,Baja,0,0,Activo,Orden básico escritorio/habitación
+Práctica de coding,Desarrollo Personal,Diario,20:00,60,Alta,Alta,0,0,Activo,Proyectos personales o ejercicios
+Estiramientos,Salud,Diario,07:45,10,Media,Baja,0,0,Activo,Antes o después del ejercicio
+Desconexión digital,Bienestar,Diario,21:30,60,Alta,Media,0,0,Activo,Sin pantallas antes de dormir
+Contactar amigo/familiar,Social,Semanal,Miércoles 19:00,15,Media,Baja,0,0,Activo,Mantener conexiones
+Revisión mensual de metas,Productividad,Mensual,Día 1 del mes,45,Alta,Media,0,0,Activo,Evaluar progreso y ajustar
+Cocinar comida saludable,Salud,Diario,13:00,30,Media,Media,0,0,Activo,Meal prep los domingos
+Práctica de respiración,Bienestar,Diario,15:00,5,Baja,Baja,0,0,Activo,Técnica 4-7-8
+Organizar bandeja de entrada,Productividad,Diario,09:00,15,Media,Baja,0,0,Activo,Inbox zero
+Dormir 7-8 horas,Salud,Diario,23:00,480,Alta,Media,0,0,Activo,Rutina de sueño consistente
+Gratitud (3 cosas),Bienestar,Diario,22:15,5,Media,Baja,0,0,Activo,Escribir en journal
