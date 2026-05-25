@@ -35,44 +35,34 @@ class AudioHandler:
     
     @staticmethod
     def _configure_ffmpeg():
-        """Configura el path de ffmpeg en pydub.
+        """Configura el path de ffmpeg añadiendo rutas comunes al PATH del sistema.
         
         Los servicios systemd tienen un PATH restringido, por lo que ffmpeg puede
         estar instalado en /usr/bin pero invisible para pydub (usa un subshell).
-        Buscamos en rutas comunes y lo seteamos explicitamente si es necesario.
+        Añadimos /usr/bin y otras rutas comunes al PATH para que pydub lo encuentre.
         """
-        from pydub import AudioSegment
         from pydub.utils import which as pydub_which
         
         # Rutas comunes donde puede estar ffmpeg en Linux
-        FFMPEG_CANDIDATES = [
-            '/usr/bin/ffmpeg',
-            '/usr/local/bin/ffmpeg',
-            '/opt/ffmpeg/bin/ffmpeg',
-            '/snap/bin/ffmpeg',
-        ]
-        FFPROBE_CANDIDATES = [
-            '/usr/bin/ffprobe',
-            '/usr/local/bin/ffprobe',
-            '/opt/ffmpeg/bin/ffprobe',
-            '/snap/bin/ffprobe',
+        common_paths = [
+            '/usr/bin',
+            '/usr/local/bin',
+            '/opt/ffmpeg/bin',
+            '/snap/bin'
         ]
         
-        # Primero intentar con el PATH actual
-        if pydub_which('ffmpeg'):
-            logger.info(f"[AudioHandler] ffmpeg en PATH: {pydub_which('ffmpeg')}")
-            return
+        # Añadir al PATH si no están ya
+        current_path = os.environ.get('PATH', '')
+        paths_to_add = [p for p in common_paths if p not in current_path.split(os.pathsep)]
         
-        # PATH restringido (ej. systemd): buscar en rutas conocidas
-        ffmpeg_path = next((p for p in FFMPEG_CANDIDATES if os.path.isfile(p)), None)
-        ffprobe_path = next((p for p in FFPROBE_CANDIDATES if os.path.isfile(p)), None)
-        
+        if paths_to_add:
+            os.environ['PATH'] = os.pathsep.join(paths_to_add) + os.pathsep + current_path
+            
+        # Verificar
+        ffmpeg_path = pydub_which('ffmpeg')
         if ffmpeg_path:
-            AudioSegment.converter = ffmpeg_path
-            if ffprobe_path:
-                AudioSegment.ffprobe = ffprobe_path
-            logger.info(f"[AudioHandler] ffmpeg configurado explicitamente: {ffmpeg_path}")
-            print(f"[AudioHandler] ffmpeg configurado explicitamente: {ffmpeg_path}")
+            logger.info(f"[AudioHandler] ffmpeg encontrado en: {ffmpeg_path} (PATH actualizado)")
+            print(f"[AudioHandler] ffmpeg encontrado en: {ffmpeg_path} (PATH actualizado)")
         else:
             logger.warning("[AudioHandler] ffmpeg NO encontrado. Los efectos de pitch/reverb en MP3 no funcionaran.")
             print("[AudioHandler] ffmpeg NO encontrado. Pitch/reverb en MP3 desactivados.")
